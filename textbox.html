@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Answer Box</title>
+    <!-- Sertakan link Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Gaya agar tampilan berada di tengah */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #333; 
+            color: #fff; 
+        }
+
+        
+        .container {
+            max-width: 400px;
+            width: 100%;
+        }
+
+       
+        #night-mode {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Pertanyaan</h1>
+        <form id="myForm">
+            <div class="form-group">
+                <label for="answer">2 - 1 ?</label>
+                <input type="text" class="form-control" id="answer" name="answer">
+            </div>
+            <button type="button" class="btn btn-primary btn-block" id="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Tombol untuk mengaktifkan/deaktifkan night mode -->
+    <button id="night-mode" class="btn btn-secondary">Night Mode</button>
+
+    <!-- Sertakan link Bootstrap JS dan jQuery (diperlukan oleh Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Ambil elemen-elemen yang diperlukan dari dokumen
+        var answerInput = document.getElementById("answer");
+        var submitButton = document.getElementById("submit");
+        var nightModeButton = document.getElementById("night-mode");
+        var body = document.body;
+
+        // Tambahkan event listener ke tombol "Submit"
+        submitButton.addEventListener("click", function() {
+            // Ambil nilai dari input box
+            var answer = answerInput.value;
+
+            // Lakukan validasi jawaban
+            if (answer === "1") {
+                // Jika jawaban benar, arahkan pengguna ke halaman HTML lainnya yang berisi video
+                window.location.href = "video.html";
+            } else {
+                // Jika jawaban salah, tampilkan pesan kesalahan
+                alert("Jawaban Anda salah. Coba lagi.");
+            }
+        });
+
+        // Tambahkan event listener untuk tombol "Night Mode"
+        nightModeButton.addEventListener("click", function() {
+            // Toggle mode malam dengan mengubah warna latar belakang dan teks
+            if (body.classList.contains("night-mode")) {
+                body.classList.remove("night-mode");
+            } else {
+                body.classList.add("night-mode");
+            }
+        });
+    </script>
+</body>
+</html>
